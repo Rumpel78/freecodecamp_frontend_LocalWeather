@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/spinKit.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+        var ENV = '__REPLACE_ENV__';
+    </script>
+
+    <body>
+        <div class="container text-center">
+            <h1>Free Code Camp Zipline</h1>
+            <div class="spinner">
+                <div class="sk-circle">
+                    <div class="sk-circle1 sk-child"></div>
+                    <div class="sk-circle2 sk-child"></div>
+                    <div class="sk-circle3 sk-child"></div>
+                    <div class="sk-circle4 sk-child"></div>
+                    <div class="sk-circle5 sk-child"></div>
+                    <div class="sk-circle6 sk-child"></div>
+                    <div class="sk-circle7 sk-child"></div>
+                    <div class="sk-circle8 sk-child"></div>
+                    <div class="sk-circle9 sk-child"></div>
+                    <div class="sk-circle10 sk-child"></div>
+                    <div class="sk-circle11 sk-child"></div>
+                    <div class="sk-circle12 sk-child"></div>
+                </div>
+                Please wait, loading weather!
+            </div>
+            <div class='content'>
+                <h2>Current local weather in <span id="location"></span></h2>
+                <h1 id="weatherdescription"></h1>
+                <i id="weathericon"></i>
+                <b id="temperature"></b>
+                <div class="row">
+                    <div class="btn-group" role="group">
+                        <button id="buttonCelsius" type="button" class="btn btn-default active">°C</button>
+                        <button id="buttonFahrenheit" type="button" class="btn btn-default">°F</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="text-center">
+            Weathericons by <a href="https://weathericons.io" target="_blank">weathericons.io</a>
+            &nbsp;&nbsp;
+            Images from <a href="https://stocksnap.io/">StockSnap.io</a> and <a href="https://unsplash.com/">Unsplash</a>
+            &nbsp;&nbsp;
+            Powered by <a href="https://forecast.io" target="_blank">Forecast</a>
+        </footer>
+    </body>
+    <script src="js/vendor.js"></script>
+    <script src="js/main.js"></script>
+
+</html>
