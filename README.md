@@ -9,7 +9,7 @@ This is the mostly the same implementation using forecast.io as weather provider
 ### Usage
 Clone the repository
 
-   git clone https://github.com/Rumpel78/freecodecamp_frontend_LocalWeather
+    git clone https://github.com/Rumpel78/freecodecamp_frontend_LocalWeather
 
 Run
 
