@@ -13,9 +13,11 @@ class ForecastIO {
   }
 
   refreshWeather(lat, lon, callback) {
-    const url = `http://api.forecast.io/forecast/${this.apiKey}/${lat},${lon}`;
+    const url = `https://api.darksky.net/forecast/${this.apiKey}/${lat},${lon}`;
+    console.log(url);
     $.ajax({
       url,
+      dataType: "jsonp",
       success: result => {
         const cur = result.currently;
         Bing.getLocation(lat, lon, location => {
