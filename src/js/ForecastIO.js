@@ -14,7 +14,6 @@ class ForecastIO {
 
   refreshWeather(lat, lon, callback) {
     const url = `https://api.darksky.net/forecast/${this.apiKey}/${lat},${lon}`;
-    console.log(url);
     $.ajax({
       url,
       dataType: "jsonp",
