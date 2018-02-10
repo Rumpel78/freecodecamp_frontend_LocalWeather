@@ -43,10 +43,5 @@
             "node_modules/jquery/dist/jquery.js"
         ]
     },
-    "rsync": {
-        "hostname": "YOUR HOSTNAME",
-        "username": "YOUR USERNAME",
-        "destination": "YOUR FOLDER"
-    },
     "dependencies": {}
 }

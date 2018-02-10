@@ -58,7 +58,6 @@ gulp.task('browser-sync', function() {
       baseDir: "./build/"
     },
     files: ['./build/**/*.*'],
-    browser: 'google-chrome',
     port: 5000,
   });
 });
