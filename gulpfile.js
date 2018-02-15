@@ -157,7 +157,7 @@ gulp.task('clean:map', function () {
 });
 
 gulp.task('move', ['move:assets']);
-gulp.task('build', ['build:js:main', 'build:js:vendor', 'build:css', 'move']);
+gulp.task('build', gulpSequence('clean', ['build:html:dist', 'build:js:main', 'build:js:vendor', 'build:css'], 'move'));
 gulp.task('compress', ['compress:js', 'compress:css']);
 
 gulp.task('default', gulpSequence('clean', ['build:html:dev', 'build'], 'browser-sync', 'watch'));
