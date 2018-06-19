@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  weather:
+    image: registry.gitlab.com/rumpel_freecodecamp/frontend_localweather:latest    
+    build: .
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+      resources:
+        limits:
+          cpus: "0.10"
+          memory: 50M
+    restart: always
+    environment:
+      - "NODE_ENV=production"
+      - "BASEPATH=/voting"
+      - "BING_KEY=MyBingKey"
+      - "FORECAST_KEY=MyForecastIoKey"
+      - "CORS_DOMAINS=http://example.com;http://myDomain.net"
+      - "BASEPATH=/weather"
+    ports:
+      - "3000:3000"
