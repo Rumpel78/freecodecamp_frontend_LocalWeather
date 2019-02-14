@@ -29,7 +29,6 @@
         "gulp-sass": "^2.3.2",
         "gulp-sequence": "^0.4.5",
         "gulp-uglify": "^1.5.4",
-        "imagemin-pngquant": "^5.0.0",
         "jquery": "^3.0.0",
         "rollup": "^0.33.0",
         "rollup-plugin-babel": "^2.6.1",

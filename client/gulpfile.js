@@ -10,7 +10,6 @@ var browserSync = require('browser-sync');
 
 var compressJs = require('gulp-uglify');
 var compressCss = require('gulp-cssnano');
-var pngquant = require('imagemin-pngquant');
 var imagemin = require('gulp-imagemin');
 
 var rimraf = require('gulp-rimraf');
