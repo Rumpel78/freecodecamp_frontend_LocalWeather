@@ -7,11 +7,6 @@ services:
 
 before_script:
   - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-  - eval $(ssh-agent -s)
-  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-  - mkdir -p ~/.ssh
-  - chmod 700 ~/.ssh
   
 build-master:
   stage: build
@@ -29,9 +24,22 @@ build:
   except:
     - master
 
-deploy_master:
+deploy-to-swarm:
   stage: deploy
+  variables:
+    DOCKER_HOST: tcp://paprikon.at:2376
+    DOCKER_TLS_VERIFY: 1
+    SERVICE_NAME: websites_app
+  image: docker:latest
   script:
-    - ssh rumpel@paprikon.at "echo 'test' > test.file"
+    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
+    - mkdir -p ~/.docker
+    - echo "$TLSCACERT" > ~/.docker/ca.pem
+    - echo "$TLSCERT" > ~/.docker/cert.pem
+    - echo "$TLSKEY" > ~/.docker/key.pem
+    - docker stack deploy --with-registry-auth --compose-file=docker-stack-compose.yml ${CI_PROJECT_NAMESPACE}-${CI_PROJECT_NAME}-${SERVICE_NAME}
+  environment:
+    name: master
+    url: http://${CI_BUILD_REF_NAME}.paprikon.at
   only:
     - master
