@@ -32,7 +32,6 @@ deploy-to-swarm:
     SERVICE_NAME: websites_app
   image: docker:latest
   script:
-    - docker login -u gitlab-ci-token -p "$CI_BUILD_TOKEN" "$CI_REGISTRY"
     - mkdir -p ~/.docker
     - echo "$TLSCACERT" > ~/.docker/ca.pem
     - echo "$TLSCERT" > ~/.docker/cert.pem
