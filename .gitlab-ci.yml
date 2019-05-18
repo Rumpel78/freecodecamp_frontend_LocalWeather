@@ -47,7 +47,7 @@ deploy-dev:
     - echo "$TLSCA" > ~/.docker/ca.pem
     - echo "$TLSCERT" > ~/.docker/cert.pem
     - echo "$TLSKEY" > ~/.docker/key.pem
-    - docker -H $DOCKER_HOST --tls --tlsverify service update websites_dev_weather
+    - docker -H paprikon.at:24900 --tls --tlsverify service update websites_dev_weather
   environment:
     name: master
     url: http://dev.paprikon.at/weather
