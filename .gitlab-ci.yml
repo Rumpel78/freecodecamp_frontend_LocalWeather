@@ -16,29 +16,40 @@ build-master:
   only:
     - master
 
-build:
+build-dev:
   stage: build
   script:
     - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" .
     - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG"
-  except:
-    - master
+  only:
+    - dev
 
-deploy-to-swarm:
+deploy-master:
   stage: deploy
-  variables:
-    DOCKER_HOST: tcp://paprikon.at:2376
-    DOCKER_TLS_VERIFY: 1
-    SERVICE_NAME: websites_app
   image: docker:latest
   script:
     - mkdir -p ~/.docker
-    - echo "$TLSCACERT" > ~/.docker/ca.pem
+    - echo "$TLSCA" > ~/.docker/ca.pem
     - echo "$TLSCERT" > ~/.docker/cert.pem
     - echo "$TLSKEY" > ~/.docker/key.pem
-    - docker stack deploy --with-registry-auth --compose-file=docker-stack-compose.yml ${CI_PROJECT_NAMESPACE}-${CI_PROJECT_NAME}-${SERVICE_NAME}
+    - docker -H $DOCKER_HOST --tls --tlsverify service update websites_app_weather
   environment:
     name: master
-    url: http://${CI_BUILD_REF_NAME}.paprikon.at
+    url: http://app.paprikon.at/weather
   only:
     - master
+    
+deploy-dev:
+  stage: deploy
+  image: docker:latest
+  script:
+    - mkdir -p ~/.docker
+    - echo "$TLSCA" > ~/.docker/ca.pem
+    - echo "$TLSCERT" > ~/.docker/cert.pem
+    - echo "$TLSKEY" > ~/.docker/key.pem
+    - docker -H $DOCKER_HOST --tls --tlsverify service update websites_dev_weather
+  environment:
+    name: master
+    url: http://dev.paprikon.at/weather
+  only:
+    - dev
