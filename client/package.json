@@ -11,7 +11,7 @@
     "license": "ISC",
     "devDependencies": {
         "mime": ">=1.4.1",
-        "lodash": ">=4.17.13",
+        "lodash": ">=4.17.21",
         "babel": "^6.5.2",
         "babel-preset-es2015-rollup": "^1.1.1",
         "bootstrap-sass": "^3.3.6",
