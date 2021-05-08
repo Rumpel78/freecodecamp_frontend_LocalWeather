@@ -16,7 +16,7 @@
     "node-fetch": "^2.1.2",
     "pug": "^2.0.3",
     "serve-favicon": "~2.4.5",
-    "lodash": ">=4.17.15",
+    "lodash": ">=4.17.21",
     "mime": ">=1.4.1"
   },
   "devDependencies": {
